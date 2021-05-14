@@ -18,7 +18,7 @@ category_label = ["No Apto", "Marginalmente Apto", "Moderadamente Apto", "Sumame
 category_count = [0,0,0,0]
 
 for count in range(measures):
-    print(f)
+    print(f'Reading now Measure #{count+1}')
     temp = 0.0
     depth = 0.0
     while True:
@@ -32,31 +32,36 @@ for count in range(measures):
     sumtemp+=temp
     sumdepth+=depth
 
-    category_temp = 1
-    category_depth = 1
+    category_temp = 0
+    category_depth = 0
 
     ## Temperature
     if (temp < 18)  or (temp > 32):
-        category_temp = 1
+        category_temp = 0
     elif (temp < 21) or (temp in range(31,33)):
-        category_temp = 2
+        category_temp = 1
     elif temp < 25 or (temp in range(29,31)):
-        category_temp = 3
+        category_temp = 2
     else:
-        category_temp = 4
+        category_temp = 3
 
     ## Depth
     if depth <25:
-        category_depth = 1 
+        category_depth = 0
     elif depth < 50:
-        category_depth = 2
+        category_depth = 1
     elif depth < 101:
-        category_depth = 3
+        category_depth = 2
     else:
-        category_depth = 4
+        category_depth = 3
 
-    print(category_label[min(category_temp,category_depth)-1])
+    category_count[min(category_temp,category_depth)] = category_count[min(category_temp,category_depth)]+1
 
+print(f'{round(sumtemp/measures,2)}')
+print(f'{round(sumdepth/measures,2)}')
 
+category_label.reverse()
+category_count.reverse()
 
-
+for index in range(len(category_label)):
+    print(f'{category_label[index]} {category_count[index]}')
