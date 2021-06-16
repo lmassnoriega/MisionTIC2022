@@ -8,7 +8,7 @@ flag = True
 
 while flag:
     try: 
-        measures = int(input("Provide the amount of measures taken into record: "))
+        measures = int(input(""))
         if measures > 0 :
             flag = False
     except:
@@ -18,13 +18,13 @@ category_label = ["No Apto", "Marginalmente Apto", "Moderadamente Apto", "Sumame
 category_count = [0,0,0,0]
 
 for count in range(measures):
-    print(f'Reading now Measure #{count+1}')
+    ##print(f'Reading now Measure #{count+1}')
     temp = 0.0
     depth = 0.0
     while True:
         try: 
-            temp = float(input("Provide average terrain temperature: "))
-            depth = float(input("Provide efective soil depth: "))
+            temp = float(input(""))
+            depth = float(input(""))
             break
         except:
             print("A decimal number was expected. Please try again.")
@@ -45,7 +45,7 @@ for count in range(measures):
     else:
         category_temp = 3
 
-    ## Depth
+    ## Depthz
     if depth <25:
         category_depth = 0
     elif depth < 50:
@@ -57,11 +57,11 @@ for count in range(measures):
 
     category_count[min(category_temp,category_depth)] = category_count[min(category_temp,category_depth)]+1
 
-print(f'{round(sumtemp/measures,2)}')
-print(f'{round(sumdepth/measures,2)}')
+print(format(sumtemp/measures, '.2f'))
+print(format(sumdepth/measures, '.2f'))
 
 category_label.reverse()
 category_count.reverse()
 
 for index in range(len(category_label)):
-    print(f'{category_label[index]} {category_count[index]}')
+    print(f'{category_label[index].lower()} {category_count[index]}')

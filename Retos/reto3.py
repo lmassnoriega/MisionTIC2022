@@ -36,27 +36,27 @@ def cast_list(test_list, data_type):
 
 ## Main Loop
 
-zones = validate_input("Specify number of zones: ")
+zones = validate_input("")
 category_label = ["No Apto", "Marginalmente Apto", "Moderadamente Apto", "Sumamente Apto"]
 category_count = [0,0,0,0]
 
-avg_temps = []
-avg_depths = []
+avg_temps = ""
+avg_depths = ""
 for i in range(zones):
-    print(f"Zone {i+1}")
+    ##print(f"Zone {i+1}")
     switch = True
     temp_array = ''
     depth_array = ''
     while switch:
-        temp_array = input(f"Temp Zone {i+1} ")
-        depth_array= input(f"Depth Zone {i+1} ")
+        temp_array = input("")
+        depth_array= input("")
         switch = (not validate_series(temp_array)) and (not validate_series(depth_array))
     temps = cast_list(temp_array.split(), float)
     depths = cast_list(depth_array.split(), float)
     item_temp = round(sum(temps)/len(temps),2)
     item_depth = round(sum(depths)/len(depths),2)
-    avg_temps.append(item_temp)
-    avg_depths.append(item_depth)
+    avg_temps += format(item_temp, '.2f')+" "
+    avg_depths+= format(item_depth, '.2f')+" "
 
     category_temp = 0
     category_depth = 0
@@ -74,7 +74,7 @@ for i in range(zones):
     ## Depth
     if item_depth <25:
         category_depth = 0
-    elif item_depth < 50:
+    elif item_depth < 51:
         category_depth = 1
     elif item_depth < 101:
         category_depth = 2
@@ -83,11 +83,11 @@ for i in range(zones):
 
     category_count[min(category_temp,category_depth)] = category_count[min(category_temp,category_depth)]+1
 
-print(avg_temps)
-print(avg_depths)
+print(avg_temps.rstrip())
+print(avg_depths.rstrip())
 
 category_label.reverse()
 category_count.reverse()
 
 for index in range(len(category_label)):
-    print(f'{category_label[index]} {category_count[index]}')
+    print(f'{category_label[index].lower()} {category_count[index]}')
