@@ -64,9 +64,9 @@ for i in range(zones):
     ## Temperature
     if (item_temp < 18)  or (item_temp > 32):
         category_temp = 0
-    elif (item_temp < 21) or (item_temp in range(31,33)):
+    elif (18 <= item_temp <= 20) or (30 < item_temp <= 32):
         category_temp = 1
-    elif item_temp < 25 or (item_temp in range(29,31)):
+    elif (20 < item_temp <= 24) or (28 < item_temp <= 30):
         category_temp = 2
     else:
         category_temp = 3
@@ -74,9 +74,9 @@ for i in range(zones):
     ## Depth
     if item_depth <25:
         category_depth = 0
-    elif item_depth < 51:
+    elif (25 <= item_depth <= 50):
         category_depth = 1
-    elif item_depth < 101:
+    elif (50 < item_depth <= 100):
         category_depth = 2
     else:
         category_depth = 3
