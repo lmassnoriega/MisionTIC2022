@@ -1,4 +1,4 @@
-![Logo](img/Logo.png)
+![Logo](images/Logo.png)
 
 # Introducción 
 
