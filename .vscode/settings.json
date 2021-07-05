@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "training/Ciclo 2/Sesion 2/lib/javafx.base.jar",
+        "training/Ciclo 2/Sesion 2/lib/javafx.controls.jar",
+        "training/Ciclo 2/Sesion 2/lib/javafx.fxml.jar",
+        "training/Ciclo 2/Sesion 2/lib/javafx.graphics.jar",
+        "training/Ciclo 2/Sesion 2/lib/javafx.media.jar",
+        "training/Ciclo 2/Sesion 2/lib/javafx.swing.jar",
+        "training/Ciclo 2/Sesion 2/lib/javafx.web.jar",
+        "training/Ciclo 2/Sesion 2/lib/javafx-swt.jar"
+    ]
+}
