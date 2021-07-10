@@ -1,0 +1,106 @@
+inicializa float nivel_comun[5][2] // para contar las veces que aparece cada nivel de riesgo, filas 5 niveles, 2 columnas: 1 nivel de riesgo, 2 veces que aparece
+
+cantidad=leer entero // scanear el primer dato
+
+inicializa valor_riesgos[cantidad] // inicializa vector para los datos
+
+auxtxt[]= Scanner.nextline().split(" ") // scanear la 2da entrada, la divide segun los espacios y llana el vector auxiliar
+
+float promedio=0 // inicializa variable para sumar promedios
+
+para i desde 0 hasta i<cantidad { // recorre el vector auxiliar para capturar los datos recibidos
+
+	valor_riesgos[i]=Float.parseFloat(auxtxt[i]) // guarda cada valor en el vector de riesgos
+	
+	promedio+=valor_riesgos[i] // suma el valor al promedio
+	
+	si valor_riesgos[i]<=5 { // sin riesgo
+		nivel_comun[0][0]++ // suma 1 al nivel
+		si nivel_comun[0][1]==0 {
+			nivel_comun[0][1]=valor_riesgos[i]
+		} sino si nivel_comun[0][1] > valor_riesgos[i] {
+			nivel_comun[0][1]=valor_riesgos[i]
+		}
+	} sino si valor_riesgos[i]<=14 { // bajo
+		nivel_comun[1][0]++ // suma 1 al nivel
+		si nivel_comun[1][1]==0 {
+			nivel_comun[1][1]=valor_riesgos[i]
+		} sino si nivel_comun[1][1] > valor_riesgos[i] {
+			nivel_comun[1][1]=valor_riesgos[i]
+		}
+	} sino si valor_riesgos[i]<=35 { // medio
+		nivel_comun[2][0]++ // suma 1 al nivel
+		si nivel_comun[2][1]==0 {
+			nivel_comun[2][1]=valor_riesgos[i]
+		} sino si nivel_comun[2][1] > valor_riesgos[i] {
+			nivel_comun[2][1]=valor_riesgos[i]
+		}
+	} sino si valor_riesgos[i]<=80 { // alto
+		nivel_comun[3][0]++ // suma 1 al nivel
+		si nivel_comun[3][1]==0 {
+			nivel_comun[3][1]=valor_riesgos[i]
+		} sino si nivel_comun[3][1] > valor_riesgos[i] {
+			nivel_comun[3][1]=valor_riesgos[i]
+		}
+	} sino { // inviable
+		nivel_comun[4][0]++ // suma 1 al nivel
+		si nivel_comun[4][1]==0 {
+			nivel_comun[4][1]=valor_riesgos[i]
+		} sino si nivel_comun[4][1] > valor_riesgos[i] {
+			nivel_comun[4][1]=valor_riesgos[i]
+		}
+	}
+}
+
+promedio /= cantidad // calcula el promedio gral
+
+si promedio<=5 {
+	imprime "Continuar el control y la vigilancia"
+} sino {
+	si promedio<=14 {
+		imprime "BAJO"
+	} si promedio<=35 {
+		imprime "MEDIO"
+	} si promedio<=80 {
+		imprime "ALTO"
+	} sino {
+		imprime "INVIABLE SANITARIAMENTE"
+	}
+	
+	imprime Promedio formateado a 2 decimales ( System.out.format("%.2f%n", promedio); ) NOTA: %n significa salto de línea
+	
+	// calcular el más común
+
+	entero id_nivel // nivel más común
+
+	float cant_comun,val_comun
+
+	para i hasta i<5 {
+		si i==0 { // supone que el primer dato es el más común
+			id_nivel=i
+			cant_comun=nivel_comun[i][0]
+			val_comun=nivel_comun[i][1]
+		} sino si nivel_comun[i][0] > cant_comun {
+			id_nivel=i
+			cant_comun=nivel_comun[i][0]
+			val_comun=nivel_comun[i][1]
+		} sino si nivel_comun[i][0]==cant_comun && val_comun>nivel_comun[i][1] {
+			id_nivel=i
+			cant_comun=nivel_comun[i][0]
+			val_comun=nivel_comun[i][1]
+		}
+	}
+	// imprime el resultado del nivel más común
+	switch id_nivel {
+		caso 0:
+			imprime "SIN RIESGO"
+		caso 1:
+			imprime "BAJO"
+		caso 2:
+			imprime "MEDIO"
+		caso 3:
+			imprime "ALTO"
+		cualquier caso:
+			imprime "INVIABLE SANITARIAMENTE"
+	}
+}
