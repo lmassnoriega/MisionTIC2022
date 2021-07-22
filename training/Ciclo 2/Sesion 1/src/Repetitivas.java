@@ -1,5 +1,3 @@
-package paqueton;
-
 import java.util.Scanner;
 
 public class Repetitivas {

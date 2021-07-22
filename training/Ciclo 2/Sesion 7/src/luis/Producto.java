@@ -1,3 +1,4 @@
+package luis;
 public class Producto implements Comparable<Producto> {
 
     private static final float dsctoDefault = 1;
