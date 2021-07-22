@@ -76,7 +76,7 @@ public class Tienda {
                     obtenerProducto(codigoProducto).ActualizarProducto(Float.parseFloat(datosProducto[0]), Float.parseFloat(datosProducto[1]), Integer.parseInt(datosProducto[2]), Integer.parseInt(datosProducto[3]), Integer.parseInt(datosProducto[4]), 1);
                 } catch (Exception e) {
                 }
-                System.out.println("Datos actualiaados correctamente "+ obtenerProducto(codigoProducto).toString());
+                System.out.println("Datos actualizados correctamente "+ obtenerProducto(codigoProducto).toString());
             }
         } while (!completo);
     }
@@ -90,6 +90,7 @@ public class Tienda {
             }
         }
     }
+
     public void Sobreoferta(){
         Collections.sort(inventario);
         for (Producto producto : inventario) {
@@ -157,8 +158,6 @@ public class Tienda {
     }
     //#endregion
 
-
-
     //#region Validaciones
 
     public Producto obtenerProducto(int codigo){
@@ -183,7 +182,6 @@ public class Tienda {
         }
         return false;
     }
-
 
     public boolean existeProducto(String nombre){
         for (Producto producto : inventario) {
@@ -245,9 +243,6 @@ public class Tienda {
     }
 
     ////#endregion
-
-    
-
     public static void main(String[] args) throws Exception {
         Tienda D1 = new Tienda();
         System.out.println("Bienvenido a la tienda!");
