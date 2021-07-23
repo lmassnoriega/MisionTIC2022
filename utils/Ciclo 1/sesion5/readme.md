@@ -14,7 +14,7 @@ Recuerda que los condicionales múltiples y anidados nos permiten evaluar múlti
 
 En Python, esto se escribe un poco diferente y la estructura general depende de las tabulaciones. Por ejemplo:
 
-```
+``` python
 def ejemplo1():
     x = int(input("Por favor ingresa un número: "))
     if x < 0:

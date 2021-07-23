@@ -8,7 +8,7 @@ La verdad es que hemos venido trabajando con funciones desde que empezamos con a
 
 > ¡Recuerda que los parámetros son opcionales!
 
-```
+``` python
 def suma(a,b):
     
     print(a+b)

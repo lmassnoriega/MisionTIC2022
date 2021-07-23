@@ -6,7 +6,7 @@ El ciclo Para o For en Python nos ayuda a ejecutar dentro de un rango determinad
 
 En la semana uno exploramos el tipo de dato string (una cadena de caracteres). Los caracteres dentro de este tipo de dato en Python pueden ser recorridos con la posición en la que se encuentran dentro de la cadena. Veamos un ejemplo:
 
-```
+``` python
 def ejemplo1():
     palabra = "Prueba"
     longitud = len(palabra)
@@ -22,7 +22,7 @@ def ejemplo1():
 
 Vamos a modificar este ejemplo para conocer la longitud de la palabra y validar la ubicación de cada valor dentro de la cadena.
 
-```
+``` python
 def ejemplo2():
     palabra = "Prueba"
     longitud = len(palabra)

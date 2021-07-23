@@ -4,7 +4,7 @@
 
 Como vimos anteriormente, en Python, el ciclo Mientras Que se maneja con "while". La opción break, puede parar el ciclo, aunque la condición sea real. Por ejemplo:
 
-```
+``` python
 def ejemplo1():
     i = 1
     while i < 6:
@@ -16,7 +16,7 @@ def ejemplo1():
 
 La opción continue, puede continuar el ciclo y saltarse cuando sea verdadera. Por ejemplo:
 
-```
+``` python
 def ejemplo2():
     i = 1
     while i < 6:

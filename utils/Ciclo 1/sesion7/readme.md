@@ -5,7 +5,7 @@
 
 Como vimos anteriormente, en Python, el ciclo Mientras Que se maneja con *"while"*. Por ejemplo:
 
-```
+``` python
 def ejemplo1():
     i = 1
     while i < 6:
