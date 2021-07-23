@@ -74,7 +74,7 @@ Adicionalmente se debe diseñar una interfaz de usuario grafica por medio de la 
 
 ### Ejemplo de posible interfaz 🚀
 
- ![Interfaz Sugerida](/img/reto3.png)
+ ![Interfaz Sugerida](img/reto3.png)
 
 En la interfaz presentada, el botón Ingresar incluye los datos en el campo de Datos ingresados y el botón procesar calcula la salida esperada y la muestra en el campo de Salidas.
 
