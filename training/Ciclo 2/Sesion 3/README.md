@@ -18,14 +18,15 @@ Tabla de la cantidad en bodega
 
 <table>
     <thead>
-        <tr>
+        <tr colspan=3>
+            Lista de códigos
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>354</td>
-            <td>256</td>
-            <td>127</td>
+            <td> 354 </td>
+            <td> 256 </td>
+            <td> 127 </td>
         </tr>
     </tbody>
 </table>
