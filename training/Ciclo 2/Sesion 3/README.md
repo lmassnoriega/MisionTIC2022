@@ -18,9 +18,6 @@ Tabla de la cantidad en bodega
 
 <table>
     <thead>
-        <tr colspan=3>
-            Lista de códigos
-        </tr>
     </thead>
     <tbody>
         <tr>
