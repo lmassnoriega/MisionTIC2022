@@ -22,15 +22,15 @@ Algunas ONG’s se atribuyeron la tarea de poder diseñar un dispositivo para an
 
 Se requiere que usted desarrolle un programa que debe realizar lo siguiente:
 
-●	Leer la cantidad de cuerpos de agua a analizar.
-●	Leer y almacenar el nombre de cada cuerpo de agua (siempre será una sola palabra), número con el que se identifica, el municipio del que forma parte (Siempre será una sola palabra) y la clasificación IRCA. Haga Split con espacio “ ” (Ver entrada y salida).
+* Leer la cantidad de cuerpos de agua a analizar.
+* Leer y almacenar el nombre de cada cuerpo de agua (siempre será una sola palabra), número con el que se identifica, el municipio del que forma parte (Siempre será una sola palabra) y la clasificación IRCA. Haga Split con espacio *“ ”* (Ver entrada y salida).
 
 Una vez leídos los datos:
 
-●	Indicar la clasificación IRCA de cada cuerpo de agua.
-●	Indicar cuántos cuerpos de agua tienen un nivel de riesgo entre SIN RIESGO y BAJO.
-●	Indicar el nombre de los cuerpos de agua que tienen un nivel de riesgo SIN RIESGO separados por espacio, en caso de no haber ninguno devolver NA.
-●	Indicar la clasificación IRCA promedio de todos los cuerpos de agua ingresados.
+* Indicar la clasificación IRCA de cada cuerpo de agua.
+* Indicar cuántos cuerpos de agua tienen un nivel de riesgo entre SIN RIESGO y BAJO.
+* Indicar el nombre de los cuerpos de agua que tienen un nivel de riesgo SIN RIESGO separados por espacio, en caso de no haber ninguno devolver NA.
+* Indicar la clasificación IRCA promedio de todos los cuerpos de agua ingresados.
 
 En cuanto al diseño del programa se debe realizar lo siguiente:
 
@@ -90,3 +90,13 @@ Clasificación IRCA promedio de todos los cuerpos de agua ingresados: 37.65
         </tr>
     </tbody>
 </table>
+
+**Nota:** Por favor NO incluya mensajes en los inputs.
+
+**Nota:** Las tildes y cualquier otro signo ortográfico han sido omitidos a propósito en las entradas y salidas del programa. Por favor NO use ningún signo ortográfico dentro del desarrollo de su solución ya que estos pueden representar errores en la calificación automática de Codegrade.
+
+**Nota:** Leer todo como ```nextLine()``` y luego convertir los datos al tipo de variable necesario.
+
+**Nota:** El archivo de la clase debe llamarse **```CuerpoDeAgua.java```** y el principal **```reto2.java```**, de lo contrario no podrán ser cargados en la plataforma de Codegrade.
+
+**Nota:** En caso de haber salidas numéricas todas deben estar formateadas a dos cifras decimales.
