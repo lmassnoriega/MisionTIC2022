@@ -1,14 +1,26 @@
-## Getting Started
+# Sesión # 5: Componente Práctico
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Implementar una clase llamada Producto, la cual tenga los siguientes atributos y métodos:
 
-## Folder Structure
+### Atributos:
 
-The workspace contains two folders by default, where:
+* Código
+* Precio de compra
+* Cantidad en bodega
+* Cantidad mínima requerida en bodega.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+### Métodos:
 
-## Dependency Management
+* Solicitar pedido: devuelva true si debe solicitar el producto al proveedor y false en caso contrario.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Diseñar un programa que:
+
+* Consulte el número de productos a manejar.
+* Cree una vector de productos en el cual se guardarán las instancias de cada uno de ellos.
+* Solicite por consola el código, el precio de compra, la cantidad en bodega y la cantidad mínima requerida para cada uno de los productos a manejar.
+* Recorra el vector de productos y arroje una alerta en caso tal se deba solicitar el pedido al proveedor.
+* Indique cuál es el código del producto que tiene menor cantidad de unidades en bodega.
+
+
+**Recuerde:** *Implementar buenas prácticas de programación declarando los atributos privados y creando los métodos get y set para cada uno de ellos.*
+
