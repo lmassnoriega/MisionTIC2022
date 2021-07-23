@@ -59,7 +59,7 @@ Ejemplos:
 
 ## Instrucciones Reto 1
 
-1. Nota: Por favor NO incluya mensajes en los inputs.
-2. Nota: Las tildes y cualquier otro signo ortográfico han sido omitidos a propósito en las entradas y salidas del programa. Por favor NO use ningún signo ortográfico dentro del desarrollo de su solución ya que estos pueden representar errores en la calificación automática de Codegrade.
-3. Nota: El archivo debe llamarse reto1.java, de lo contrario no podrá ser cargado en la plataforma de Codegrade
-4. Nota: En caso de haber salidas numéricas todas deben estar formateadas a dos cifras decimales.
+* **Nota:** *Por favor NO incluya mensajes en los inputs.*
+* **Nota:** *Las tildes y cualquier otro signo ortográfico han sido omitidos a propósito en las entradas y salidas del programa. Por favor NO use ningún signo ortográfico dentro del desarrollo de su solución ya que estos pueden representar errores en la calificación automática de Codegrade.*
+* **Nota:** *El archivo debe llamarse reto1.java, de lo contrario no podrá ser cargado en la plataforma de Codegrade*
+* **Nota:** *En caso de haber salidas numéricas todas deben estar formateadas a dos cifras decimales.*
