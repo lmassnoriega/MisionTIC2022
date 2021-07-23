@@ -1,9 +1,19 @@
-public class CuerpoDeAgua {
+/**
+ * 
+ */
+public class CuerpoDeAgua extends ObjetoGeografico{
     protected String nombre;
     private int id;
     private String municipio;
     protected float irca;
 
+    /**
+     * 
+     * @param Nombre
+     * @param ID
+     * @param Municipio
+     * @param IRCA_level
+     */
     public CuerpoDeAgua(String Nombre, int ID, String Municipio, float IRCA_level) {
         this.nombre = Nombre;
         this.id = ID;
@@ -11,6 +21,10 @@ public class CuerpoDeAgua {
         this.irca = IRCA_level;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int category(){
         if (irca <= 5) {
             return 0;
@@ -31,6 +45,10 @@ public class CuerpoDeAgua {
         }
     }
 
+    /**
+     * 
+     * @return
+     */
     public String nivel(){
         if (irca <= 5) {
             return "SIN RIESGO";
