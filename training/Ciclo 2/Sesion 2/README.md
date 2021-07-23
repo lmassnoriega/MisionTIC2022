@@ -37,9 +37,8 @@ Lista de cantidad en bodega
 
 Lista de cantidad mínima requerida
 
-|  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- |
 |17 | 34 | 60 |	56 | 32 | 16 | 5 |
+| --- | --- | --- | --- | --- | --- | --- |
 
 Códigos de productos que son necesario pedir: 
 
@@ -50,3 +49,30 @@ Códigos de productos que son necesario pedir:
 **Código con mayor número unidades: 256**
 
 **Código con menor número  unidades: 354**
+
+<table>
+    <thead>
+        <tr>
+            <th>Layer 1</th>
+            <th>Layer 2</th>
+            <th>Layer 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>L1 Name</td>
+            <td rowspan=2>L2 Name A</td>
+            <td>L3 Name A</td>
+        </tr>
+        <tr>
+            <td>L3 Name B</td>
+        </tr>
+        <tr>
+            <td rowspan=2>L2 Name B</td>
+            <td>L3 Name C</td>
+        </tr>
+        <tr>
+            <td>L3 Name D</td>
+        </tr>
+    </tbody>
+</table>
