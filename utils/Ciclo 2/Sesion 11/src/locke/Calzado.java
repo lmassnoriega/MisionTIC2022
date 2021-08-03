@@ -1,5 +1,7 @@
 package locke;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+
 public class Calzado extends Producto{
 
     private int talla;
@@ -27,9 +29,8 @@ public class Calzado extends Producto{
     }
 
     @Override
-    protected void totalPagar() {
-        // TODO Auto-generated method stub
-        
+    protected float totalPagar(int unidades) {
+        return getPrecioCompra() * unidades;     
     }
 
     @Override

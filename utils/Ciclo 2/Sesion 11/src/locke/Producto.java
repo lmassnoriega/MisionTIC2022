@@ -41,10 +41,22 @@ public abstract class Producto implements Comparable<Producto> {
     
     //#region Metodos Abstractos
 
+    /**
+     * 
+     * @return
+     */
     protected abstract boolean solicitarPedido();
 
-    protected abstract void totalPagar();
+    /**
+     * 
+     * @param unidades
+     * @return
+     */
+    protected abstract float totalPagar(int unidades);
 
+    /**
+     * 
+     */
     protected abstract void mostrar();
 
     //#endregion

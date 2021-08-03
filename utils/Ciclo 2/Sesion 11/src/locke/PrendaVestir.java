@@ -47,9 +47,8 @@ public class PrendaVestir extends Producto{
     }
 
     @Override
-    protected void totalPagar() {
-        // TODO Auto-generated method stub
-        
+    protected float totalPagar(int unidades) {
+        return getPrecioCompra() * unidades;   
     }
 
     @Override
