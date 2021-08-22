@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import models.*;
+
 /**
  * 
  */
@@ -30,7 +32,7 @@ public class reto3old {
      */
     public void irca_individual(){
         for (CuerpoDeAgua cuerpo : cuerpos) {
-            System.out.printf("%4.2f \n",cuerpo.irca);
+            System.out.printf("%4.2f \n",cuerpo.getIrca());
         }
     }
 
@@ -54,7 +56,7 @@ public class reto3old {
         String sinriesgos = "";
         for (CuerpoDeAgua cuerpo : cuerpos) {
             if (CuerpoDeAgua.index(cuerpo.nivel()) == 0) {
-                sinriesgos += cuerpo.nombre + " " ;
+                sinriesgos += cuerpo.getNombre() + " " ;
             }
         }
         sinriesgos = sinriesgos.trim();
@@ -73,7 +75,7 @@ public class reto3old {
     public void irca_promedio(){
         float suma = 0;
         for (CuerpoDeAgua cuerpoDeAgua : cuerpos) {
-            suma += cuerpoDeAgua.irca;
+            suma += cuerpoDeAgua.getIrca();
         }
         System.out.printf("%4.2f",(suma/cuerpos.size()));
     }

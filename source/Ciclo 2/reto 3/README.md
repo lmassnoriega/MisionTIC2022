@@ -2,6 +2,12 @@
 
 > Nombre del reto:	Lector del nivel de la calidad del agua en el Atlántico
 
+## Instrucciones del Desarrollador
+
+Para ejecutar este programa con minimos cambios, establezca la ruta de las librerias de JavaFX a la siguiente ubicación.
+
+> C:/JavaFX/lib/
+
 ## Descripción de reto con su respectiva solución:
 
 En el año 2015, los líderes mundiales adoptaron un conjunto de objetivos globales para erradicar la pobreza, proteger el planeta y asegurar la prosperidad para todos como parte de una nueva agenda de desarrollo sostenible. Cada objetivo tiene metas específicas que deben alcanzarse en los próximos 15 años.

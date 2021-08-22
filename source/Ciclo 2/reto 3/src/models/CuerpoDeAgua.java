@@ -1,3 +1,5 @@
+package models;
+
 /**
  * @version 1.2 08/03/2021
  * @author Spartan Locke
@@ -12,6 +14,46 @@ public class CuerpoDeAgua extends ObjetoGeografico {
     private int id;
     protected float irca;
 
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTipoAgua() {
+        return this.tipoAgua;
+    }
+
+    public void setTipoAgua(String tipoAgua) {
+        this.tipoAgua = tipoAgua;
+    }
+
+    public String getTipoCuerpo() {
+        return this.tipoCuerpo;
+    }
+
+    public void setTipoCuerpo(String tipoCuerpo) {
+        this.tipoCuerpo = tipoCuerpo;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public float getIrca() {
+        return this.irca;
+    }
+
+    public void setIrca(float irca) {
+        this.irca = irca;
+    }
+    
     /**
      * Constuctor basico que toma el nombre, identificador, nombre del municipio y clasificacion numerica IRCA.
      * @param Nombre Cadena de caracteres que representa el nombre del cuerpo de agua a crear.

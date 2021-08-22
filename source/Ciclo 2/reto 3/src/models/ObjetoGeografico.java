@@ -1,3 +1,5 @@
+package models;
+
 /**
  * ObjetoGeografico
  * @author Spartan Locke
@@ -5,7 +7,7 @@
  */
 public class ObjetoGeografico {
 
-    protected String municipio;
+    private String municipio;
 
     /**
      * 
@@ -14,4 +16,13 @@ public class ObjetoGeografico {
     public ObjetoGeografico(String municipio) {
         this.municipio = municipio;
     }
+
+    public String getMunicipio() {
+        return this.municipio;
+    }
+
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
+    }
+
 }
