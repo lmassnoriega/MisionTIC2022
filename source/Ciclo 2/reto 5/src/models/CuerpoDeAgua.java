@@ -1,5 +1,4 @@
 package models;
-
 /**
  * @version 1.2 08/03/2021
  * @author Spartan Locke
@@ -12,6 +11,7 @@ public class CuerpoDeAgua extends ObjetoGeografico {
     private String tipoAgua;
     private String tipoCuerpo;
     private int id;
+    private int habitantes;
     protected float irca;
 
     public String getNombre() {
@@ -53,6 +53,14 @@ public class CuerpoDeAgua extends ObjetoGeografico {
     public void setIrca(float irca) {
         this.irca = irca;
     }
+
+    public int getHabitantes() {
+        return DensidadPoblacional.afeccion(this.habitantes);
+    }
+
+    public void setHabitantes(int habitantes) {
+        this.habitantes = habitantes;
+    }
     
     /**
      * Constuctor basico que toma el nombre, identificador, nombre del municipio y clasificacion numerica IRCA.
@@ -61,12 +69,13 @@ public class CuerpoDeAgua extends ObjetoGeografico {
      * @param Municipio Cadena de caracteres que especifica el municipio en el que esta inscrito el cuerpo de agua a crear.
      * @param IRCA_level Valor de punto flotante con el valor IRCA del cuerpo de agua a crear. Este valor oscila entre 0 y 100.
      */
-    public CuerpoDeAgua(String Nombre, int ID, String Municipio, String TipoCuerpo, String TipoAgua, float IRCA_level) {
+    public CuerpoDeAgua(String Nombre, int ID, String Municipio, String TipoCuerpo, String TipoAgua, float IRCA_level, int Habitantes) {
         super(Municipio);
         this.nombre = Nombre;
         this.id = ID;
         this.tipoAgua = TipoAgua;
         this.tipoCuerpo = TipoCuerpo;
+        this.habitantes = Habitantes;
         this.irca = IRCA_level;
     }
 

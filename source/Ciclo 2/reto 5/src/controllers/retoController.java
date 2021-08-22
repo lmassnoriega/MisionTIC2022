@@ -1,9 +1,6 @@
 package controllers;
 
 import javafx.fxml.FXML;
-
-import javax.print.attribute.standard.PresentationDirection;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +23,7 @@ import models.*;
 public class retoController {
 
     private ObservableList<CuerpoDeAgua> cuerpos;
-
+    private int idCount = 0;
     //#region fields
     @FXML
     private VBox appWindow;
@@ -47,7 +44,7 @@ public class retoController {
     private TextField stateField;
 
     @FXML
-    private TextField idField;
+    private TextField populationField;
 
     @FXML
     private TextField geographyTypeField;
@@ -80,6 +77,9 @@ public class retoController {
     private TableColumn<CuerpoDeAgua, String> waterTypeColumn;
 
     @FXML
+    private TableColumn<CuerpoDeAgua, Integer> afectioncolumn;
+
+    @FXML
     private TableColumn<CuerpoDeAgua, Float> ircaColumn;
 
     @FXML
@@ -94,14 +94,8 @@ public class retoController {
     @FXML
     void addCuerpoAgua(ActionEvent event) {
         if (validateFields()) {
-            if (!validateID(idField.getText())) {
-                anadirCuerpo(nameField.getText(),Integer.parseInt(idField.getText()),stateField.getText(),geographyTypeField.getText(),waterTypeSelector.getValue(), Float.parseFloat(ircaField.getText()));
-            }
-            else{
-                Alert alert = new Alert(AlertType.WARNING);
-                alert.setContentText("El ID ingresado ya existe, ingrese otro valor.");
-                alert.show();
-            }
+            anadirCuerpo(nameField.getText(),idCount,stateField.getText(),geographyTypeField.getText(),waterTypeSelector.getValue(), Float.parseFloat(ircaField.getText()),Integer.parseInt(populationField.getText()));
+            idCount++;
         }
     }
 
@@ -115,7 +109,7 @@ public class retoController {
     void clearFields(ActionEvent event) {
         cuerpos.clear();
         resultsArea.clear();
-        idField.clear();
+        populationField.clear();
         nameField.clear();
         stateField.clear();
         geographyTypeField.clear();
@@ -147,6 +141,7 @@ public class retoController {
          */
         idColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,Integer>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,String>("nombre"));
+        afectioncolumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,Integer>("habitantes"));
         waterTypeColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,String>("tipoAgua"));
         geographyTypeColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,String>("tipoCuerpo"));
         stateColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,String>("municipio"));
@@ -161,10 +156,10 @@ public class retoController {
 
     boolean validateFields(){
         try {
-            int id = Integer.parseInt(idField.getText());
+            int population = Integer.parseInt(populationField.getText());
         } catch (Exception e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText("El campo de ID no debe ser vacio o poser otro valor distinto de numeros");
+            alert.setContentText("El campo de Poblacion en la zona no debe ser vacio o poser otro valor distinto de numeros");
             alert.show();
             return false;
         }
@@ -197,20 +192,6 @@ public class retoController {
         return true;
     }
 
-    /**
-     * 
-     * @param value
-     * @return
-     */
-    boolean validateID(String value){
-        for (CuerpoDeAgua cuerpoDeAgua : cuerpos) {
-            if (cuerpoDeAgua.getId() == Integer.parseInt(value)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
    /**
     * 
     * @param nombre
@@ -220,8 +201,8 @@ public class retoController {
     * @param tipoAgua
     * @param irca
     */
-    public void anadirCuerpo(String nombre, int id, String municipio, String tipoCuerpo, String tipoAgua, Float irca){
-        CuerpoDeAgua cuerpo = new CuerpoDeAgua(nombre, id, municipio,tipoCuerpo,tipoAgua,irca);
+    public void anadirCuerpo(String nombre, int id, String municipio, String tipoCuerpo, String tipoAgua, Float irca, int habitantes){
+        CuerpoDeAgua cuerpo = new CuerpoDeAgua(nombre, id, municipio,tipoCuerpo,tipoAgua,irca,habitantes);
         cuerpos.add(cuerpo);
     }
 

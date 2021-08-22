@@ -82,8 +82,8 @@
             <Label text="Nombre" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Label text="Municipio" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label text="Tipo de Agua" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <Label text="ID" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Label text="Tipo de Cuerpo de Agua" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Label text="Habitantes en la zona" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Label text="Tipo de Cuerpo de Agua" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Label text="Valor IRCA" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
@@ -95,12 +95,12 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="idField" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <TextField fx:id="populationField" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="geographyTypeField" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <TextField fx:id="geographyTypeField" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -135,12 +135,13 @@
       </GridPane>
       <TableView fx:id="dataTable" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="idColumn" editable="false" prefWidth="48.0" sortable="false" text="ID" />
-          <TableColumn fx:id="nameColumn" editable="false" prefWidth="206.0" sortable="false" text="Nombre" />
-            <TableColumn fx:id="stateColumn" editable="false" minWidth="0.0" prefWidth="134.0" sortable="false" text="Municipio" />
-            <TableColumn fx:id="geographyTypeColumn" editable="false" prefWidth="152.0" sortable="false" text="Tipo de Cuerpo " />
-            <TableColumn fx:id="waterTypeColumn" editable="false" prefWidth="132.0" sortable="false" text="Tipo de Agua" />
-            <TableColumn fx:id="ircaColumn" editable="false" prefWidth="107.0" sortable="false" text="IRCA" />
+          <TableColumn fx:id="idColumn" editable="false" maxWidth="50.0" minWidth="30.0" prefWidth="50.0" sortable="false" text="ID" />
+          <TableColumn fx:id="nameColumn" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" sortable="false" text="Nombre" />
+            <TableColumn fx:id="stateColumn" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" sortable="false" text="Municipio" />
+            <TableColumn fx:id="geographyTypeColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="Tipo de Cuerpo " />
+            <TableColumn fx:id="waterTypeColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="Tipo de Agua" />
+            <TableColumn fx:id="afectioncolumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Afeccion" />
+            <TableColumn fx:id="ircaColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" sortable="false" text="IRCA" />
         </columns>
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
