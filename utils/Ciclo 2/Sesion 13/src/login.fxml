@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginController">
+   <children>
+      <Label text="La Tienda Maravillal" textFill="#d41111">
+         <font>
+            <Font name="Arial" size="23.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </Label>
+      <ImageView fitHeight="87.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@wonder.png" />
+         </image>
+      </ImageView>
+      <GridPane prefHeight="62.0" prefWidth="452.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.39996337890625" minWidth="10.0" prefWidth="183.99998779296874" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="328.0000244140625" minWidth="10.0" prefWidth="312.8000122070313" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="52.799993896484374" minHeight="10.0" prefHeight="31.9999755859375" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="40.000006103515624" minHeight="8.000006103515624" prefHeight="28.8000244140625" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label maxWidth="200.0" text="Usuario">
+               <GridPane.margin>
+                  <Insets left="80.0" right="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label text="Contraseña" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="80.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usertxt" maxWidth="250.0" prefHeight="26.0" prefWidth="100.0" GridPane.columnIndex="1">
+               <padding>
+                  <Insets left="60.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="passwdtxt" maxWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+      </GridPane>
+      <Button fx:id="btn1" mnemonicParsing="false" prefHeight="37.0" prefWidth="134.0" text="Iniciar sesión" textAlignment="CENTER">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
