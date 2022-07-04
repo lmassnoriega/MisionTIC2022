@@ -1,0 +1,16 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "d:\\Roymer\\MisionTIC2022\\CICLO2\\JavaFx\\javafx-sdk-16\\lib\\javafx.base.jar",
+        "d:\\Roymer\\MisionTIC2022\\CICLO2\\JavaFx\\javafx-sdk-16\\lib\\javafx.controls.jar",
+        "d:\\Roymer\\MisionTIC2022\\CICLO2\\JavaFx\\javafx-sdk-16\\lib\\javafx.fxml.jar",
+        "d:\\Roymer\\MisionTIC2022\\CICLO2\\JavaFx\\javafx-sdk-16\\lib\\javafx.graphics.jar",
+        "d:\\Roymer\\MisionTIC2022\\CICLO2\\JavaFx\\javafx-sdk-16\\lib\\javafx.media.jar",
+        "d:\\Roymer\\MisionTIC2022\\CICLO2\\JavaFx\\javafx-sdk-16\\lib\\javafx.swing.jar",
+        "d:\\Roymer\\MisionTIC2022\\CICLO2\\JavaFx\\javafx-sdk-16\\lib\\javafx.web.jar",
+        "d:\\Roymer\\MisionTIC2022\\CICLO2\\JavaFx\\javafx-sdk-16\\lib\\javafx-swt.jar",
+        "d:\\Roymer\\MisionTIC2022\\CICLO2\\JavaFx\\sqlite\\sqlite-jdbc-3.34.0.jar"
+    ]
+}

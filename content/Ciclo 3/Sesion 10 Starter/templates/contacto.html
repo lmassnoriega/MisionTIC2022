@@ -1,0 +1,29 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Práctica Sesión 10</title>
+    </head>
+
+    <body>
+        {% block contenido %}
+        <h1>Contáctenos</h1>
+        <form action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.nombre.label }}<br>
+                {{ form.nombre(size=30) }}<br>
+            </p>
+            <p>
+                {{ form.correo.label }}<br>
+                {{ form.correo(size=30) }}<br>
+            </p>
+            <p>
+                {{ form.mensaje.label }}<br>
+                {{ form.mensaje(size=130) }}<br>
+            </p>
+            <p>{{ form.enviar() }}</p>
+        </form>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.registrarVentaController">
+   <children>
+      <TabPane layoutX="29.0" layoutY="108.0" prefHeight="353.0" prefWidth="479.0" style="-fx-border-color: green;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Registro Clientes">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="570.0" style="-fx-border-color: grren;">
+                     <children>
+                        <Label layoutX="94.0" layoutY="47.0" text="Cédula">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="92.0" layoutY="90.0" text="Nombre">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="92.0" layoutY="134.0" text="Apellido">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="92.0" layoutY="177.0" text="Género">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="cedula" layoutX="202.0" layoutY="51.0" prefHeight="26.0" prefWidth="182.0" style="-fx-border-color: green;" />
+                        <TextField fx:id="nombreCli" layoutX="202.0" layoutY="94.0" prefHeight="26.0" prefWidth="182.0" style="-fx-border-color: green;" />
+                        <TextField fx:id="apellido" layoutX="202.0" layoutY="138.0" prefHeight="26.0" prefWidth="182.0" style="-fx-border-color: green;" />
+                        <TextField fx:id="genero" layoutX="338.0" layoutY="181.0" prefHeight="26.0" prefWidth="46.0" style="-fx-border-color: green;" />
+                        <Button fx:id="btnGuardarCliente" layoutX="114.0" layoutY="233.0" mnemonicParsing="false" onAction="#guardarCliente" prefHeight="42.0" prefWidth="247.0" style="-fx-background-color: #78e3b3; -fx-border-color: green;" text="GIARDAR CLIENTE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab style="border-color: green;" text="Registro Venta">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-border-color: green;">
+                     <children>
+                        <Label layoutX="94.0" layoutY="57.0" text="Producto">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="94.0" layoutY="113.0" text="Cliente">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="94.0" layoutY="169.0" text="Cantidad">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cbProducto" layoutX="218.0" layoutY="58.0" prefHeight="26.0" prefWidth="195.0" style="-fx-border-color: green;" />
+                        <ComboBox fx:id="cbCliente" layoutX="218.0" layoutY="114.0" prefHeight="26.0" prefWidth="195.0" style="-fx-border-color: green;" />
+                        <TextField fx:id="cantidad" layoutX="334.0" layoutY="170.0" prefHeight="26.0" prefWidth="78.0" style="-fx-border-color: green;" />
+                        <Button fx:id="btnRegistrarVenta" layoutX="117.0" layoutY="223.0" mnemonicParsing="false" onAction="#registrarVenta" prefHeight="46.0" prefWidth="244.0" style="-fx-border-color: green; -fx-background-color: #78e3b3;" text="REGISTRAR VENTA">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="19.0" />
+                           </font></Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="155.0" layoutY="46.0" prefHeight="46.0" prefWidth="231.0" text="Clientes y Ventas" wrapText="true">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="5.0" prefHeight="22.0" prefWidth="288.0" text="Almacén La Maravilla" wrapText="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Separator layoutX="29.0" layoutY="90.0" prefHeight="3.0" prefWidth="473.0" />
+   </children>
+</AnchorPane>
