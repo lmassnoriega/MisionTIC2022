@@ -1,15 +1,19 @@
+package main;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
  * Clase principal del reto 2 de programacion basica del ciclo 2.
+ * 
  * @version 1.1 07/27/2021
  * @author Spartan Locke
  */
 public class reto2 {
     private ArrayList<CuerpoDeAgua> cuerpos;
-
+    public static final String DECIMAL_FORMAT = "%4.2f";
     /**
      * 
      */
@@ -21,65 +25,64 @@ public class reto2 {
      * 
      * @param lectura
      */
-    public void anadirCuerpo(String lectura){
-        String datos[] = lectura.split(" ");
-        CuerpoDeAgua cuerpo = new CuerpoDeAgua(datos[0], Integer.parseInt(datos[1]), datos[2], Float.parseFloat(datos[3]));
+    public void anadirCuerpo(String lectura) {
+        String[] datos = lectura.split(" ");
+        CuerpoDeAgua cuerpo = new CuerpoDeAgua(datos[0], Integer.parseInt(datos[1]), datos[2],
+                Float.parseFloat(datos[3]));
         cuerpos.add(cuerpo);
     }
 
     /**
      * 
      */
-    public void irca_individual(){
+    public void ircaIndividual() {
         for (CuerpoDeAgua cuerpo : cuerpos) {
-            System.out.printf("%4.2f \n",cuerpo.irca);
+            System.out.println(String.format(DECIMAL_FORMAT, cuerpo.irca));
         }
     }
 
     /**
      * 
      */
-    public void cuerposBajosSinRiesgo(){
-        float sinriesgos = 0;
+    public void cuerposBajosSinRiesgo() {
+        float sinRiesgos = 0;
         for (CuerpoDeAgua cuerpo : cuerpos) {
             if (CuerpoDeAgua.index(cuerpo.nivel()) < 2) {
-                sinriesgos++;
+                sinRiesgos++;
             }
         }
-        System.out.printf("%4.2f \n",sinriesgos);
+        System.out.println(String.format(DECIMAL_FORMAT, sinRiesgos));
     }
 
     /**
      * 
      */
-    public void cuerposSinRiesgo(){
-        String sinriesgos = "";
+    public void cuerposSinRiesgo() {
+        StringBuilder sinRiesgos = new StringBuilder();
         for (CuerpoDeAgua cuerpo : cuerpos) {
             if (CuerpoDeAgua.index(cuerpo.nivel()) == 0) {
-                sinriesgos += cuerpo.nombre + " " ;
+                sinRiesgos.append(cuerpo.nombre).append(" ");
             }
         }
-        sinriesgos = sinriesgos.trim();
 
-        if (sinriesgos.isEmpty()) {
+        if (sinRiesgos.toString().trim().isEmpty()) {
             System.out.println("NA");
-        }
-        else{
-            System.out.println(sinriesgos);
+        } else {
+            System.out.println(sinRiesgos.toString().trim());
         }
     }
 
     /**
      * 
      */
-    public void irca_promedio(){
+    public void ircaPromedio() {
         float suma = 0;
         for (CuerpoDeAgua cuerpoDeAgua : cuerpos) {
             suma += cuerpoDeAgua.irca;
         }
-        System.out.printf("%4.2f",(suma/cuerpos.size()));
+        System.out.println(String.format(DECIMAL_FORMAT, (suma / cuerpos.size())));
     }
-    
+
     /**
      * 
      * @param args
@@ -94,11 +97,14 @@ public class reto2 {
                 String data = lector.readLine();
                 actividad.anadirCuerpo(data);
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
+            System.out.println("Error al leer los datos de entrada");
+        } catch (IOException e) {
+            System.out.println("Error general del aplicativo");
         }
-        actividad.irca_individual();
+        actividad.ircaIndividual();
         actividad.cuerposBajosSinRiesgo();
         actividad.cuerposSinRiesgo();
-        actividad.irca_promedio();
+        actividad.ircaPromedio();
     }
 }

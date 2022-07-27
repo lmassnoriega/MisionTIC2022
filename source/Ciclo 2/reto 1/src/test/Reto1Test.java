@@ -1,4 +1,4 @@
-package test.java;
+package test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.java.reto1;
+import main.reto1;
 
 public class Reto1Test {
     String[] categories = { "SIN RIESGO", "BAJO", "MEDIO", "ALTO", "INVIABLE SANITARIAMENTE" };
