@@ -1,4 +1,7 @@
+package main;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -7,86 +10,86 @@ import models.*;
 /**
  * 
  */
-public class reto3old {
+public class reto3 {
     private ArrayList<CuerpoDeAgua> cuerpos;
+    private static final String DECIMAL_FORMAT = "%.2f";
 
     /**
-     * 
+     *
      */
-    public reto3old() {
+    public reto3() {
         this.cuerpos = new ArrayList<>();
     }
 
     /**
-     * 
+     *
      * @param lectura
      */
-    public void anadirCuerpo(String lectura){
-        String datos[] = lectura.split(" ");
-        CuerpoDeAgua cuerpo = new CuerpoDeAgua(datos[0], Integer.parseInt(datos[1]), datos[2], datos[3], datos[4], Float.parseFloat(datos[5]));
+    public void anadirCuerpo(String lectura) {
+        String[] datos = lectura.split(" ");
+        CuerpoDeAgua cuerpo = new CuerpoDeAgua(datos[0], Integer.parseInt(datos[1]), datos[2], datos[3], datos[4],
+                Float.parseFloat(datos[5]));
         cuerpos.add(cuerpo);
     }
 
     /**
-     * 
+     *
      */
-    public void irca_individual(){
+    public void ircaIndividual() {
         for (CuerpoDeAgua cuerpo : cuerpos) {
-            System.out.printf("%4.2f \n",cuerpo.getIrca());
+            System.out.println(String.format(DECIMAL_FORMAT, cuerpo.getIrca()));
         }
     }
 
     /**
-     * 
+     *
      */
-    public void cuerposBajosSinRiesgo(){
+    public void cuerposBajosSinRiesgo() {
         float sinriesgos = 0;
         for (CuerpoDeAgua cuerpo : cuerpos) {
             if (CuerpoDeAgua.index(cuerpo.nivel()) < 2) {
                 sinriesgos++;
             }
         }
-        System.out.printf("%4.2f \n",sinriesgos);
+        System.out.println(String.format(DECIMAL_FORMAT, sinriesgos));
     }
 
     /**
-     * 
+     *
      */
-    public void cuerposSinRiesgo(){
-        String sinriesgos = "";
+    public void cuerposSinRiesgo() {
+        StringBuilder sinriesgos = new StringBuilder();
         for (CuerpoDeAgua cuerpo : cuerpos) {
             if (CuerpoDeAgua.index(cuerpo.nivel()) == 0) {
-                sinriesgos += cuerpo.getNombre() + " " ;
+                sinriesgos.append(cuerpo.getNombre()).append(" ");
             }
         }
-        sinriesgos = sinriesgos.trim();
 
-        if (sinriesgos.isEmpty()) {
+        if (sinriesgos.toString().isEmpty()) {
             System.out.println("NA");
-        }
-        else{
+        } else {
             System.out.println(sinriesgos);
         }
     }
 
     /**
-     * 
+     *
      */
-    public void irca_promedio(){
+    public void ircaPromedio() {
         float suma = 0;
         for (CuerpoDeAgua cuerpoDeAgua : cuerpos) {
             suma += cuerpoDeAgua.getIrca();
         }
-        System.out.printf("%4.2f",(suma/cuerpos.size()));
+        System.out.println(String.format(DECIMAL_FORMAT, (suma / cuerpos.size())));
     }
-    
+
     /**
-     * 
+     *
      * @param args
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        reto3old actividad = new reto3old();
+        reto3 actividad = new reto3();
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         try {
             int lecturas = Integer.parseInt(lector.readLine());
@@ -94,11 +97,12 @@ public class reto3old {
                 String data = lector.readLine();
                 actividad.anadirCuerpo(data);
             }
-        } catch (Exception e) {
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Error al leer los datos de entrada");
         }
-        actividad.irca_individual();
+        actividad.ircaIndividual();
         actividad.cuerposBajosSinRiesgo();
         actividad.cuerposSinRiesgo();
-        actividad.irca_promedio();
+        actividad.ircaPromedio();
     }
 }

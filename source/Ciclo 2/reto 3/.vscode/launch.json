@@ -15,7 +15,7 @@
             "type": "java",
             "name": "Launch Reto 3 CodeGrade",
             "request": "launch",
-            "mainClass": "reto3old",
+            "mainClass": "main.reto3",
         }
     ]
 }

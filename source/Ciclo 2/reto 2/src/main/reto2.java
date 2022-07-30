@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class reto2 {
     private ArrayList<CuerpoDeAgua> cuerpos;
     public static final String DECIMAL_FORMAT = "%4.2f";
+
     /**
      * 
      */
