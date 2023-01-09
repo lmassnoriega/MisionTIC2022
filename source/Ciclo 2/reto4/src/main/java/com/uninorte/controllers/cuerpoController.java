@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class cuerpoController {
+public class CuerpoController {
 
     CuerpodeAguaController controller;
 
@@ -64,28 +64,28 @@ public class cuerpoController {
 
     boolean validateFields(){
         try {
-            Float ircalevel = Float.parseFloat(ircaField.getText());
-        } catch (Exception e) {
+            Float.parseFloat(ircaField.getText());
+        } catch (NumberFormatException e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText("El campo de ID no debe ser vacio o poser otro valor distinto de numeros decimales");
+            alert.setContentText("El campo de ID no debe ser vacío o poseer otro valor distinto de numeros decimales");
             alert.show();
             return false;
         }
         if (nameField.getText().isBlank()) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText("El campo de nombre no puede ser vacio");
+            alert.setContentText("El campo de nombre no puede ser vacío");
             alert.show();
             return false;
         }
         if (stateField.getText().isBlank()) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText("El campo de municipio no puede ser vacio");
+            alert.setContentText("El campo de municipio no puede ser vacío");
             alert.show();
             return false;
         }
         if (geographyType.getText().isBlank()) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setContentText("El campo de tipo de cuerpo de agua no puede ser vacio");
+            alert.setContentText("El campo de tipo de cuerpo de agua no puede ser vacío");
             alert.show();
             return false;
         }

@@ -1,6 +1,14 @@
 package com.uninorte.controllers;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.uninorte.Reto4;
 import com.uninorte.models.CuerpoDeAgua;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,8 +18,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,15 +38,14 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
-import java.util.ArrayList;
+public class RetoController {
 
-public class retoController {
-
+    private static final Logger logger = LogManager.getLogger(RetoController.class);
     private ObservableList<CuerpoDeAgua> cuerpos;
     CuerpodeAguaController controller;
     CuerpoDeAgua selectedItem = null;
 
-    //#region fields
+    // #region fields
     @FXML
     private VBox appWindow;
 
@@ -93,20 +109,21 @@ public class retoController {
     @FXML
     private Button analyzeButton;
 
-    //#endregion
+    // #endregion
 
-    //#region events
+    // #region events
     @FXML
     void addCuerpoAgua(ActionEvent event) {
         if (validateFields()) {
-            anadirCuerpo(nameField.getText(),stateField.getText(),geographyTypeField.getText(),waterTypeSelector.getValue(), Float.parseFloat(ircaField.getText()));
+            anadirCuerpo(nameField.getText(), stateField.getText(), geographyTypeField.getText(),
+                    waterTypeSelector.getValue(), Float.parseFloat(ircaField.getText()));
             updatedataTable();
         }
     }
 
     @FXML
     void analizeTableData(ActionEvent event) {
-        String resultados = irca_individual() + cuerposBajosSinRiesgo() + cuerposSinRiesgo() + "\n" +  irca_promedio();
+        String resultados = ircaIndividual() + cuerposBajosSinRiesgo() + cuerposSinRiesgo() + "\n" + ircaPromedio();
         resultsArea.setText(resultados);
     }
 
@@ -133,7 +150,7 @@ public class retoController {
     }
 
     @FXML
-    void initialize(){
+    void initialize() {
         /**
          * Init Observable Collections and local controllers
          */
@@ -150,105 +167,110 @@ public class retoController {
         /**
          * Establish column bindings within datatable
          */
-        idColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,Integer>("id"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,String>("nombre"));
-        waterTypeColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,String>("tipoAgua"));
-        geographyTypeColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,String>("tipoCuerpo"));
-        stateColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,String>("municipio"));
-        ircaColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua,Float>("irca"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, Integer>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, String>("nombre"));
+        waterTypeColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, String>("tipoAgua"));
+        geographyTypeColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, String>("tipoCuerpo"));
+        stateColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, String>("municipio"));
+        ircaColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, Float>("irca"));
 
-        //add cell of button edit 
-        Callback<TableColumn<CuerpoDeAgua, String>, TableCell<CuerpoDeAgua, String>> cellFactory = (TableColumn<CuerpoDeAgua, String> param) -> {
-            // make cell containing buttons
-            final TableCell<CuerpoDeAgua, String> cell = new TableCell<CuerpoDeAgua, String>() {
-
-                Image imgEdit = new Image("img/edit.png");
-                Button btnEdit = new Button();
-                Image imgDelete = new Image("img/delete.png");
-                Button btnDelete = new Button();
-                @Override
-                public void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-                    //that cell created only on non-empty rows
-                    if (empty) {
-                        setGraphic(null);
-                        setText(null);
-                    } else {
-                        btnDelete.setStyle("-fx-background-color: transparent;");
-                        //btnDelete.setPrefSize(25, 25);
-                        ImageView iv = new ImageView();
-                        iv.setImage(imgDelete);
-                        iv.setFitWidth(20);
-                        iv.setPreserveRatio(true);
-                        iv.setSmooth(true);
-                        iv.setCache(true);
-                        btnDelete.setGraphic(iv);                            
-                        setAlignment(Pos.CENTER);
-                        btnDelete.setOnAction(e ->{
-                            try {
-                                selectedItem = getTableView().getItems().get(getIndex());
-                                controller.deleteCuerpo(selectedItem.getId());
-                                updatedataTable();                                
-                            } catch (Exception ex) {
-                                System.err.println(ex.getLocalizedMessage());
-                            }
-                        });
-                        btnEdit.setStyle("-fx-background-color: transparent;");
-                        //btnEdit.setPrefSize(2, 25);
-                        ImageView iv2 = new ImageView();
-                        iv2.setImage(imgEdit);
-                        iv2.setFitWidth(20);
-                        iv2.setPreserveRatio(true);
-                        iv2.setSmooth(true);
-                        iv2.setCache(true);
-                        btnEdit.setGraphic(iv2);
-                        setAlignment(Pos.CENTER);
-                        btnEdit.setOnAction(e ->{
-                            selectedItem = getTableView().getItems().get(getIndex());
-                            FXMLLoader loader = new FXMLLoader ();
-                            loader.setLocation(getClass().getResource("/views/cuerpolayout.fxml"));
-                            try {
-                                loader.load();
-                            } catch (Exception ex) {}
-                            
-                            cuerpoController secondController = loader.getController();
-                            secondController.populateData(selectedItem.getId(),selectedItem.getNombre(), selectedItem.getMunicipio(), selectedItem.getTipoCuerpo(), selectedItem.getTipoAgua(), selectedItem.getIrca());
-                            Parent parent = loader.getRoot();
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(parent));
-                            stage.initStyle(StageStyle.UTILITY);
-                            stage.show();
-                            updatedataTable();
-                        });
-                        HBox managebtn = new HBox(btnEdit, btnDelete);
-                        managebtn.setStyle("-fx-alignment:center");
-                        setGraphic(managebtn);
-                    }
-                }
-            };
-            return cell;
-        };
+        // add cell of button edit
+        Callback<TableColumn<CuerpoDeAgua, String>, TableCell<CuerpoDeAgua, String>> cellFactory = (
+                TableColumn<CuerpoDeAgua, String> param) -> createOperationCell();
         editCol.setCellFactory(cellFactory);
         dataTable.setItems(cuerpos);
         updatedataTable();
     }
 
-    public void updatedataTable(){
+    private TableCell<CuerpoDeAgua, String> createOperationCell() {
+        // make cell containing buttons
+        return new TableCell<CuerpoDeAgua, String>() {
+
+            Image imgEdit = new Image(Reto4.class.getResourceAsStream("img/edit.png"));
+            Button btnEdit = new Button();
+            Image imgDelete = new Image(Reto4.class.getResourceAsStream("img/delete.png"));
+            Button btnDelete = new Button();
+
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                // that cell created only on non-empty rows
+                if (empty) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    btnDelete.setStyle("-fx-background-color: transparent;");
+                    ImageView iv = new ImageView();
+                    iv.setImage(imgDelete);
+                    iv.setFitWidth(20);
+                    iv.setPreserveRatio(true);
+                    iv.setSmooth(true);
+                    iv.setCache(true);
+                    btnDelete.setGraphic(iv);
+                    setAlignment(Pos.CENTER);
+                    btnDelete.setOnAction(e -> {
+                        try {
+                            selectedItem = getTableView().getItems().get(getIndex());
+                            controller.deleteCuerpo(selectedItem.getId());
+                            updatedataTable();
+                        } catch (Exception ex) {
+                            logger.error(ex.getLocalizedMessage());
+                        }
+                    });
+                    btnEdit.setStyle("-fx-background-color: transparent;");
+                    ImageView iv2 = new ImageView();
+                    iv2.setImage(imgEdit);
+                    iv2.setFitWidth(20);
+                    iv2.setPreserveRatio(true);
+                    iv2.setSmooth(true);
+                    iv2.setCache(true);
+                    btnEdit.setGraphic(iv2);
+                    setAlignment(Pos.CENTER);
+                    btnEdit.setOnAction(e -> {
+                        selectedItem = getTableView().getItems().get(getIndex());
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(Reto4.class.getResource("views/cuerpolayout.fxml"));
+                        try {
+                            loader.load();
+                        } catch (IOException ex) {
+                            logger.error(ex.getLocalizedMessage());
+                        }
+
+                        CuerpoController secondController = loader.getController();
+                        secondController.populateData(selectedItem.getId(), selectedItem.getNombre(),
+                                selectedItem.getMunicipio(), selectedItem.getTipoCuerpo(), selectedItem.getTipoAgua(),
+                                selectedItem.getIrca());
+                        Parent parent = loader.getRoot();
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(parent));
+                        stage.initStyle(StageStyle.UTILITY);
+                        stage.show();
+                        updatedataTable();
+                    });
+                    HBox managebtn = new HBox(btnEdit, btnDelete);
+                    managebtn.setStyle("-fx-alignment:center");
+                    setGraphic(managebtn);
+                }
+            }
+        };
+    }
+
+    public void updatedataTable() {
         cuerpos.clear();
-        ArrayList<CuerpoDeAgua> list = controller.GetAllCuerpos();
+        List<CuerpoDeAgua> list = controller.getAllCuerpos();
         for (CuerpoDeAgua cuerpoDeAgua : list) {
             cuerpos.add(cuerpoDeAgua);
         }
     }
 
-    //#endregion
+    // #endregion
 
-    //#region methods
+    // #region methods
 
-    boolean validateFields(){
+    boolean validateFields() {
         try {
-            Float ircalevel = Float.parseFloat(ircaField.getText());
-        } catch (Exception e) {
+            Float.parseFloat(ircaField.getText());
+        } catch (NumberFormatException e) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setContentText("El campo de ID no debe ser vacio o poser otro valor distinto de numeros decimales");
             alert.show();
@@ -276,23 +298,21 @@ public class retoController {
     }
 
     /**
-    * 
-    * @param nombre
-    * @param municipio
-    * @param tipoCuerpo
-    * @param tipoAgua
-    * @param irca
-    */
-    public void anadirCuerpo(String nombre, String municipio, String tipoCuerpo, String tipoAgua, Float irca){
-        //CuerpoDeAgua cuerpo = new CuerpoDeAgua(nombre, id, municipio,tipoCuerpo,tipoAgua,irca);
-        //cuerpos.add(cuerpo);
+     * 
+     * @param nombre
+     * @param municipio
+     * @param tipoCuerpo
+     * @param tipoAgua
+     * @param irca
+     */
+    public void anadirCuerpo(String nombre, String municipio, String tipoCuerpo, String tipoAgua, Float irca) {
         controller.insertCuerpo(nombre, municipio, tipoCuerpo, tipoAgua, irca);
     }
 
     /**
      * 
      */
-    public String irca_individual(){
+    public String ircaIndividual() {
         StringBuilder builder = new StringBuilder("");
         for (CuerpoDeAgua cuerpo : cuerpos) {
             builder.append(String.format("%4.2f \n", cuerpo.getIrca()));
@@ -303,32 +323,31 @@ public class retoController {
     /**
      * 
      */
-    public String cuerposBajosSinRiesgo(){
+    public String cuerposBajosSinRiesgo() {
         float sinriesgos = 0;
         for (CuerpoDeAgua cuerpo : cuerpos) {
             if (CuerpoDeAgua.index(cuerpo.nivel()) < 2) {
                 sinriesgos++;
             }
         }
-        return String.format("%4.2f \n",sinriesgos);
+        return String.format("%4.2f %n", sinriesgos);
     }
 
     /**
      * 
      */
-    public String cuerposSinRiesgo(){
+    public String cuerposSinRiesgo() {
         String sinriesgos = "";
         for (CuerpoDeAgua cuerpo : cuerpos) {
             if (CuerpoDeAgua.index(cuerpo.nivel()) == 0) {
-                sinriesgos += cuerpo.getNombre() + " " ;
+                sinriesgos += cuerpo.getNombre() + " ";
             }
         }
         sinriesgos = sinriesgos.trim();
 
         if (sinriesgos.isEmpty()) {
             return "NA";
-        }
-        else{
+        } else {
             return sinriesgos;
         }
     }
@@ -336,12 +355,12 @@ public class retoController {
     /**
      * 
      */
-    public String irca_promedio(){
+    public String ircaPromedio() {
         float suma = 0;
         for (CuerpoDeAgua cuerpoDeAgua : cuerpos) {
             suma += cuerpoDeAgua.getIrca();
         }
-        return String.format("%4.2f",(suma/cuerpos.size()));
+        return String.format("%4.2f", (suma / cuerpos.size()));
     }
-    //#endregion
+    // #endregion
 }

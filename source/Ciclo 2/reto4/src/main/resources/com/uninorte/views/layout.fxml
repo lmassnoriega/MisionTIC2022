@@ -66,7 +66,7 @@ POSSIBILITY OF SUCH DAMAGE.
 <?import javafx.scene.text.Font?>
 
 <VBox fx:id="appWindow" prefHeight="572.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/16"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninorte.controllers.retoController">
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninorte.controllers.RetoController">
     <children>
         <MenuBar fx:id="appMenu" VBox.vgrow="NEVER">
             <menus>

@@ -6,7 +6,8 @@ package com.uninorte.models;
  */
 public class CuerpoDeAgua extends ObjetoGeografico {
 
-    private static final String[] IRCA_CA_STRINGS = {"SIN RIESGO", "BAJO", "MEDIO", "ALTO", "INVIABLE SANITARIAMENTE"};
+    private static final String[] IRCA_CA_STRINGS = { "SIN RIESGO", "BAJO", "MEDIO", "ALTO",
+            "INVIABLE SANITARIAMENTE" };
 
     protected String nombre;
     private String tipoAgua;
@@ -53,33 +54,43 @@ public class CuerpoDeAgua extends ObjetoGeografico {
     public void setIrca(float irca) {
         this.irca = irca;
     }
-    
+
     /**
-     * Constuctor basico que toma el nombre, identificador, nombre del municipio y clasificacion numerica IRCA.
-     * @param Nombre Cadena de caracteres que representa el nombre del cuerpo de agua a crear.
-     * @param ID Identificador numerico entero del cuerpo de agua a crear. No es autogenerado.
-     * @param Municipio Cadena de caracteres que especifica el municipio en el que esta inscrito el cuerpo de agua a crear.
-     * @param IRCA_level Valor de punto flotante con el valor IRCA del cuerpo de agua a crear. Este valor oscila entre 0 y 100.
+     * Constructor básico que toma el nombre, identificador, nombre del municipio y
+     * clasificación numérica IRCA.
+     * 
+     * @param nombre    Cadena de caracteres que representa el nombre del cuerpo de
+     *                  agua a crear.
+     * @param id        Identificador numérico entero del cuerpo de agua a crear. No
+     *                  es autogenerado.
+     * @param municipio Cadena de caracteres que especifica el municipio en el que
+     *                  está inscrito el cuerpo de agua a crear.
+     * @param ircaLevel Valor de punto flotante con el valor IRCA del cuerpo de agua
+     *                  a crear. Este valor oscila entre 0 y 100.
      */
-    public CuerpoDeAgua(String Nombre, int ID, String Municipio, String TipoCuerpo, String TipoAgua, float IRCA_level) {
-        super(Municipio);
-        this.nombre = Nombre;
-        this.id = ID;
-        this.tipoAgua = TipoAgua;
-        this.tipoCuerpo = TipoCuerpo;
-        this.irca = IRCA_level;
+    public CuerpoDeAgua(String nombre, int id, String municipio, String tipoCuerpo, String tipoAgua, float ircaLevel) {
+        super(municipio);
+        this.nombre = nombre;
+        this.id = id;
+        this.tipoAgua = tipoAgua;
+        this.tipoCuerpo = tipoCuerpo;
+        this.irca = ircaLevel;
     }
 
     /**
-     * Convierte la medida numerica IRCA en un valor agrupado entero segun esta primera clasificacion.
-     * @param category_name Representa una cadena con el nombre de la categoria. Debe estar especificado en mayusculas.
-     * @return Un numero entero entre 0 y 4 para las clasificaciones "SIN RIESGO", "BAJO", "MEDIO", "ALTO", "INVIABLE SANITARIAMENTE" respectivamente.
+     * Convierte la medida numérica IRCA en un valor agrupado entero según esta
+     * primera clasificación.
+     * 
+     * @param categoryName Representa una cadena con el nombre de la categoría.
+     *                     Debe estar especificado en mayúsculas.
+     * @return Un número entero entre 0 y 4 para las clasificaciones "SIN RIESGO",
+     *         "BAJO", "MEDIO", "ALTO", "INVIABLE SANITARIAMENTE" respectivamente.
      * @see #IRCA_CA_STRINGS
      * @since 1.1
      */
-    public static int index(String category_name) {
+    public static int index(String categoryName) {
         for (int i = 0; i < IRCA_CA_STRINGS.length; i++) {
-            if (IRCA_CA_STRINGS[i].equals(category_name)) {
+            if (IRCA_CA_STRINGS[i].equals(categoryName)) {
                 return i;
             }
         }
@@ -87,12 +98,15 @@ public class CuerpoDeAgua extends ObjetoGeografico {
     }
 
     /**
-     * Convierte el valor numerico IRCA especificado al momento de crear el objeto en una etiqueta para presentacion visual.
+     * Convierte el valor numérico IRCA especificado al momento de crear el objeto
+     * en una etiqueta para presentación visual.
+     * 
      * @see #IRCA_CA_STRINGS
      * @since 1.0
-     * @return El nombre de la categoria segun el valor numerico IRCA aportado al momento de crear el cuerpo de agua.
+     * @return El nombre de la categoría según el valor numérico IRCA aportado al
+     *         momento de crear el cuerpo de agua.
      */
-    public String nivel(){
+    public String nivel() {
         if (irca <= 5) {
             return "SIN RIESGO";
         } else {
