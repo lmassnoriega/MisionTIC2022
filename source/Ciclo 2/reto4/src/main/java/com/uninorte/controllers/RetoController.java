@@ -167,12 +167,20 @@ public class RetoController {
         /**
          * Establish column bindings within datatable
          */
-        idColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, Integer>("id"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, String>("nombre"));
-        waterTypeColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, String>("tipoAgua"));
-        geographyTypeColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, String>("tipoCuerpo"));
-        stateColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, String>("municipio"));
-        ircaColumn.setCellValueFactory(new PropertyValueFactory<CuerpoDeAgua, Float>("irca"));
+
+        PropertyValueFactory<CuerpoDeAgua, Integer> idPropertyValueFactory = new PropertyValueFactory<>("id");
+        PropertyValueFactory<CuerpoDeAgua, String> namePropertyValueFactory = new PropertyValueFactory<>("nombre");
+        PropertyValueFactory<CuerpoDeAgua, String> waterTypePropertyValueFactory = new PropertyValueFactory<>("tipoAgua");
+        PropertyValueFactory<CuerpoDeAgua, String> geographyTypePropertyValueFactory = new PropertyValueFactory<>("tipoCuerpo");
+        PropertyValueFactory<CuerpoDeAgua, String> statePropertyValueFactory = new PropertyValueFactory<>("municipio");
+        PropertyValueFactory<CuerpoDeAgua, Float> ircaPropertyValueFactory = new PropertyValueFactory<>("irca");
+
+        idColumn.setCellValueFactory(idPropertyValueFactory);
+        nameColumn.setCellValueFactory(namePropertyValueFactory);
+        waterTypeColumn.setCellValueFactory(waterTypePropertyValueFactory);
+        geographyTypeColumn.setCellValueFactory(geographyTypePropertyValueFactory);
+        stateColumn.setCellValueFactory(statePropertyValueFactory);
+        ircaColumn.setCellValueFactory(ircaPropertyValueFactory);
 
         // add cell of button edit
         Callback<TableColumn<CuerpoDeAgua, String>, TableCell<CuerpoDeAgua, String>> cellFactory = (
