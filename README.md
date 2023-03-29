@@ -15,3 +15,5 @@ TODO: Requires re-work.
 3. [Retos](MisionTIC2022/tree/main/Retos) 
 
 Por organizar
+
+Pendiente modificar los vinculos en este repositorio
