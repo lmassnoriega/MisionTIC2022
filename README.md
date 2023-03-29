@@ -13,3 +13,5 @@ TODO: Requires re-work.
 1. [Semana 1](MisionTIC2022/tree/main/Semana%201)
 2. [Semana 2](MisionTIC2022/tree/main/Semana%202)
 3. [Retos](MisionTIC2022/tree/main/Retos) 
+
+Por organizar
