@@ -62,9 +62,9 @@ class Reto1Test {
         provideInput(testInput);
         reto1.main(new String[0]);
         assertEquals("""
-                MEDIO\r
-                34.85\r
-                ALTO\r
+                MEDIO
+                34.85
+                ALTO
                 """, outContent.toString());
     }
 }

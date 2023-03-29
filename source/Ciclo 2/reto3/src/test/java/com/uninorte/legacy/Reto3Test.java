@@ -45,7 +45,7 @@ public class Reto3Test {
         final String testInput = "2\nMallorquin 0 Barranquilla Cienaga Dulce 30\nMagdalena 1 Barranquilla Rio Dulce 45.3";
         provideInput(testInput);
         reto3.main(new String[0]);
-        assertEquals("30.00\r\n45.30\r\n0.00\r\nNA\r\n37.65\r\n", outContent.toString());
+        assertEquals("30.00\n45.30\n0.00\nNA\n37.65\n", outContent.toString());
     }
 
 }
